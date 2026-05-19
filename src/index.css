@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 100% 61%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 80% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 270 78% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 217 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Rainbow palette */
+    --rainbow-red: 0 100% 61%;
+    --rainbow-orange: 24 100% 55%;
+    --rainbow-yellow: 51 100% 50%;
+    --rainbow-green: 148 63% 48%;
+    --rainbow-blue: 217 80% 50%;
+    --rainbow-purple: 270 78% 53%;
+    --rainbow-pink: 338 100% 64%;
+
+    /* Section backgrounds */
+    --section-yellow: 49 100% 95%;
+    --section-purple: 260 100% 96%;
+    --section-pink: 330 100% 97%;
+
+    /* Footer */
+    --footer-bg: 0 0% 10%;
+    --footer-foreground: 0 0% 80%;
+    --footer-bottom: 0 0% 7%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .rainbow-gradient {
+    background: linear-gradient(135deg, #FF3B3B 0%, #FF7A1A 20%, #FFD600 40%, #2DC96E 60%, #1A73E8 80%, #8B2BE2 100%);
+  }
+
+  .rainbow-gradient-text {
+    background: linear-gradient(135deg, #FF3B3B 0%, #FF7A1A 20%, #FFD600 40%, #2DC96E 60%, #1A73E8 80%, #8B2BE2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .rainbow-border-top {
+    border-top: 4px solid transparent;
+    border-image: linear-gradient(90deg, #FF3B3B, #FF7A1A, #FFD600, #2DC96E, #1A73E8, #8B2BE2) 1;
+  }
+
+  .rainbow-border-bottom {
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #FF3B3B, #FF7A1A, #FFD600, #2DC96E, #1A73E8, #8B2BE2) 1;
+  }
+
+  .section-yellow {
+    background-color: hsl(var(--section-yellow));
+  }
+
+  .section-purple {
+    background-color: hsl(var(--section-purple));
+  }
+
+  .section-pink {
+    background-color: hsl(var(--section-pink));
+  }
+
+  .pill-btn {
+    @apply inline-flex items-center justify-center rounded-full px-7 py-3 font-display text-sm font-semibold uppercase tracking-wider transition-all duration-200 hover:scale-[1.03];
+  }
+
+  .pill-btn-primary {
+    @apply pill-btn bg-rainbow-red text-white shadow-lg hover:shadow-xl;
+    &:hover { background-color: #e02e2e; }
+  }
+
+  .pill-btn-white {
+    @apply pill-btn bg-white shadow-lg;
+  }
+
+  .pill-btn-outline-white {
+    @apply pill-btn border-2 border-white text-white bg-transparent hover:bg-white hover:text-foreground;
+  }
+
+  .instrument-card {
+    @apply rounded-2xl p-8 text-white transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .feature-card {
+    @apply bg-card rounded-2xl p-6 shadow-md border-l-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .floating-note {
+    @apply absolute text-white pointer-events-none select-none;
+    animation: float var(--float-duration, 5s) ease-in-out infinite;
+    opacity: var(--note-opacity, 0.3);
+  }
+}
+
+@layer utilities {
+  .font-logo {
+    font-family: 'Pacifico', cursive;
+  }
+
+  .font-heading {
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .bg-rainbow-red { background-color: #FF3B3B; }
+  .bg-rainbow-orange { background-color: #FF7A1A; }
+  .bg-rainbow-yellow { background-color: #FFD600; }
+  .bg-rainbow-green { background-color: #2DC96E; }
+  .bg-rainbow-blue { background-color: #1A73E8; }
+  .bg-rainbow-purple { background-color: #8B2BE2; }
+  .bg-rainbow-pink { background-color: #FF4D94; }
+
+  .text-rainbow-red { color: #FF3B3B; }
+  .text-rainbow-orange { color: #FF7A1A; }
+  .text-rainbow-yellow { color: #FFD600; }
+  .text-rainbow-green { color: #2DC96E; }
+  .text-rainbow-blue { color: #1A73E8; }
+  .text-rainbow-purple { color: #8B2BE2; }
+  .text-rainbow-pink { color: #FF4D94; }
+
+  .border-rainbow-red { border-color: #FF3B3B; }
+  .border-rainbow-orange { border-color: #FF7A1A; }
+  .border-rainbow-yellow { border-color: #FFD600; }
+  .border-rainbow-green { border-color: #2DC96E; }
+  .border-rainbow-blue { border-color: #1A73E8; }
+  .border-rainbow-purple { border-color: #8B2BE2; }
+  .border-rainbow-pink { border-color: #FF4D94; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-15px) rotate(5deg); }
+  50% { transform: translateY(-8px) rotate(-3deg); }
+  75% { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes bounceNote {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rainbowText {
+  0% { color: #FF3B3B; }
+  16% { color: #FF7A1A; }
+  33% { color: #FFD600; }
+  50% { color: #2DC96E; }
+  66% { color: #1A73E8; }
+  83% { color: #8B2BE2; }
+  100% { color: #FF3B3B; }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.animate-bounce-note {
+  animation: bounceNote 1.2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-rainbow-text {
+  animation: rainbowText 4s linear infinite;
+}
+
+.preloader-enter {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.preloader-exit {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
