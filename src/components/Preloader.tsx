@@ -31,13 +31,13 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
         ))}
       </div>
       <h1 className="font-logo text-3xl md:text-4xl rainbow-gradient-text preloader-enter">
-        Mississippi Seoul Music Lessons
+        Big Mama Productions
       </h1>
       <p
         className="mt-3 font-display text-muted-foreground text-sm tracking-wide preloader-enter"
         style={{ animationDelay: "0.3s" }}
       >
-        Making music fun, one lesson at a time.
+        Knoxville's Legendary Recording Studio
       </p>
     </div>
   );
