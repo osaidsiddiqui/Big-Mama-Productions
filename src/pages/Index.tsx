@@ -16,43 +16,50 @@ const Index = () => {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 bg-black overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center pt-20 bg-gradient-to-b from-black via-slate-900 to-black overflow-hidden">
+        {/* Animated background elements */}
         <div className="absolute inset-0">
-          {/* Dark gradient overlay on left side */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent z-5" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-amber-600 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500 rounded-full mix-blend-screen filter blur-3xl opacity-5 animate-blob animation-delay-2000"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-5" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left Content */}
-          <div>
-            <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
-              <span className="text-amber-500 text-xs font-bold tracking-widest">KNOXVILLE'S LEGENDARY RECORDING STUDIO</span>
+          <div className="space-y-8">
+            <div className="inline-block px-6 py-3 bg-gradient-to-r from-amber-900 to-amber-800 rounded-full border border-amber-700">
+              <span className="text-amber-300 text-xs font-bold tracking-widest">✨ KNOXVILLE'S LEGENDARY RECORDING STUDIO</span>
             </div>
-            <h1 className="font-serif text-5xl md:text-7xl text-white font-bold leading-tight mb-6">
-              Where Great Music<br />Gets Made.<br />Since the 1970s.
-            </h1>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed max-w-xl">
-              Big Mama Productions has been the creative heartbeat of Knoxville, Tennessee for over five decades — recording soul, R&B, gospel, hip-hop, and everything in between.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="space-y-6">
+              <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl text-white font-bold leading-tight bg-gradient-to-b from-white to-amber-200 bg-clip-text text-transparent">
+                Where Great Music<br />Gets Made.<br />Since the 1970s.
+              </h1>
+              <p className="text-gray-300 text-lg leading-relaxed max-w-xl font-light">
+                Big Mama Productions has been the creative heartbeat of Knoxville, Tennessee for over five decades — recording soul, R&B, gospel, hip-hop, and everything in between.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/contact"
-                className="bg-amber-600 text-black font-bold px-8 py-3 hover:bg-amber-500 transition-colors text-center"
+                className="group relative bg-gradient-to-r from-amber-600 to-amber-500 text-black font-bold px-8 py-4 hover:shadow-2xl hover:shadow-amber-600/50 transition-all duration-300 text-center overflow-hidden"
               >
-                Book a Session
+                <span className="relative z-10">Book a Session</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </Link>
               <a
                 href="https://soundcloud.com/big-mama-studio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-amber-600 text-amber-500 font-bold px-8 py-3 hover:bg-amber-900 transition-colors text-center"
+                className="group relative border-2 border-amber-600 text-amber-400 font-bold px-8 py-4 hover:bg-amber-900/50 hover:border-amber-400 transition-all duration-300 text-center backdrop-blur"
               >
-                Listen on SoundCloud
+                <span className="relative z-10">🎵 Listen on SoundCloud</span>
               </a>
             </div>
-            <div className="text-sm text-gray-400 flex items-center gap-2">
-              <Phone className="w-4 h-4 text-amber-500" />
-              📞 Call us: (865) 773-8466
+            <div className="text-sm text-gray-400 flex items-center gap-3 pt-4">
+              <div className="flex items-center gap-2 hover:text-amber-400 transition-colors cursor-pointer">
+                <Phone className="w-4 h-4 text-amber-500" />
+                <a href="tel:8657738466">📞 Call us: (865) 773-8466</a>
+              </div>
             </div>
           </div>
 
@@ -146,13 +153,14 @@ const Index = () => {
             ].map((service, i) => (
               <div
                 key={i}
-                className="bg-black border border-amber-700 p-6 rounded-lg hover:border-amber-500 transition-colors"
+                className="group relative bg-gradient-to-br from-slate-900 to-black border border-amber-700/50 p-6 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden"
               >
-                <span className="text-4xl block mb-4">{service.icon}</span>
-                <h3 className="font-bold text-white mb-3 text-lg">{service.title}</h3>
-                <p className="text-gray-400 text-sm mb-4">{service.desc}</p>
-                <Link to="/services" className="text-amber-500 hover:text-amber-400 text-sm font-bold">
-                  Learn More →
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/0 to-amber-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span className="text-5xl block mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</span>
+                <h3 className="font-bold text-white mb-3 text-lg group-hover:text-amber-300 transition-colors">{service.title}</h3>
+                <p className="text-gray-400 text-sm mb-4 group-hover:text-gray-300 transition-colors">{service.desc}</p>
+                <Link to="/services" className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-300 text-sm font-bold group-hover:gap-3 transition-all">
+                  Learn More <span>→</span>
                 </Link>
               </div>
             ))}
@@ -270,10 +278,11 @@ const Index = () => {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
-            {genres.map((genre) => (
+            {genres.map((genre, i) => (
               <span
                 key={genre}
-                className="px-6 py-3 border-2 border-amber-600 text-amber-500 font-semibold rounded-full hover:bg-amber-900 transition-colors"
+                className="group px-6 py-3 border-2 border-amber-600 text-amber-300 font-semibold rounded-full bg-gradient-to-r from-amber-900/20 to-transparent hover:from-amber-600 hover:to-amber-700 hover:text-black hover:border-amber-300 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/30 cursor-pointer hover:scale-105"
+                style={{ animationDelay: `${i * 30}ms` }}
               >
                 {genre}
               </span>
@@ -319,15 +328,20 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-black border border-amber-700 p-8 rounded-lg">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <span key={j} className="text-amber-500">★</span>
-                  ))}
+              <div key={i} className="group relative bg-gradient-to-br from-slate-800 to-black border border-amber-700/50 p-8 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/0 to-amber-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative z-10">
+                  <div className="flex gap-1 mb-4 group-hover:scale-110 transition-transform origin-left">
+                    {[...Array(5)].map((_, j) => (
+                      <span key={j} className="text-lg group-hover:text-amber-300 transition-colors">★</span>
+                    ))}
+                  </div>
+                  <p className="text-gray-300 italic mb-6 group-hover:text-white transition-colors">"[Add real artist review here — name, quote, genre]"</p>
+                  <div className="border-t border-amber-700/30 pt-4">
+                    <p className="text-white font-bold group-hover:text-amber-300 transition-colors">Artist Name</p>
+                    <p className="text-amber-500 text-sm">Genre</p>
+                  </div>
                 </div>
-                <p className="text-gray-400 italic mb-6">"[Add real artist review here — name, quote, genre]"</p>
-                <p className="text-white font-bold">Artist Name</p>
-                <p className="text-amber-500 text-sm">Genre</p>
               </div>
             ))}
           </div>

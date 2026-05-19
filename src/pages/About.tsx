@@ -131,10 +131,13 @@ const About = () => {
                 desc: "418 Highland View Drive, Knoxville, TN 37920 — easy to find, private, and fully equipped for your session.",
               },
             ].map((item, i) => (
-              <div key={i} className="bg-black border border-amber-700 p-8 rounded-lg hover:border-amber-500 transition-colors text-center">
-                <span className="text-4xl block mb-4">{item.icon}</span>
-                <h3 className="font-bold text-white mb-3 text-lg">{item.title}</h3>
-                <p className="text-gray-400">{item.desc}</p>
+              <div key={i} className="group relative bg-gradient-to-br from-slate-800 to-black border border-amber-700/50 p-8 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 text-center overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/0 to-amber-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative z-10">
+                  <span className="text-5xl block mb-4 group-hover:scale-125 transition-transform duration-300">{item.icon}</span>
+                  <h3 className="font-bold text-white mb-3 text-lg group-hover:text-amber-300 transition-colors">{item.title}</h3>
+                  <p className="text-gray-400 group-hover:text-gray-300 transition-colors">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
