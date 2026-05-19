@@ -1,8 +1,20 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Music, Volume2, Zap, Radio } from "lucide-react";
 
 const Services = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const serviceImages = [
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2Fd310a15a92894bbf88af34cab54040ee?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F95fd238fddf54a56b3cc8fea9c74a980?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F5796c91eaff3485daf13302fd86416b4?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F9ddd5637cc41408ea7f08dc4ca669140?format=webp&width=800&height=1200",
+  ];
+
   return (
     <Layout>
       {/* Hero */}
@@ -26,8 +38,12 @@ const Services = () => {
       <section className="bg-slate-900 py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="h-96 bg-gray-800 rounded-lg flex items-center justify-center">
-              <span className="text-gray-600 text-lg">Studio Photo</span>
+            <div className="h-96 rounded-lg overflow-hidden">
+              <img
+                src={serviceImages[0]}
+                alt="Recording session"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-4">
@@ -100,8 +116,12 @@ const Services = () => {
                 Request a Mix Quote
               </Link>
             </div>
-            <div className="h-96 bg-gray-800 rounded-lg flex items-center justify-center">
-              <span className="text-gray-600 text-lg">Mixing Console</span>
+            <div className="h-96 rounded-lg overflow-hidden">
+              <img
+                src={serviceImages[1]}
+                alt="Mixing console"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -111,8 +131,12 @@ const Services = () => {
       <section className="bg-slate-900 py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="h-96 bg-gray-800 rounded-lg flex items-center justify-center">
-              <span className="text-gray-600 text-lg">Production Setup</span>
+            <div className="h-96 rounded-lg overflow-hidden">
+              <img
+                src={serviceImages[2]}
+                alt="Production setup"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-4">
@@ -181,8 +205,12 @@ const Services = () => {
                 Inquire About Studio Rental
               </Link>
             </div>
-            <div className="h-96 bg-gray-800 rounded-lg flex items-center justify-center">
-              <span className="text-gray-600 text-lg">Studio Rental</span>
+            <div className="h-96 rounded-lg overflow-hidden">
+              <img
+                src={serviceImages[3]}
+                alt="Studio rental"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>

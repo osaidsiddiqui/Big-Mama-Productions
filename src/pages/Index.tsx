@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import { Music, Phone } from "lucide-react";
+import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const genres = ["Soul", "R&B", "Gospel", "Hip-Hop", "Blues", "Country", "Jazz", "Rock", "Spoken Word", "Voiceover", "Indie", "Funk"];
+
+  const heroImages = [
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2Fd310a15a92894bbf88af34cab54040ee?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F95fd238fddf54a56b3cc8fea9c74a980?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F5796c91eaff3485daf13302fd86416b4?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F9ddd5637cc41408ea7f08dc4ca669140?format=webp&width=800&height=1200",
+  ];
 
   const steps = [
     { num: 1, icon: "🎤", title: "Book Your Session", desc: "Contact us to schedule your recording date and discuss your project needs." },
@@ -16,12 +28,34 @@ const Index = () => {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 bg-gradient-to-b from-black via-slate-900 to-black overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
+      <section className="relative min-h-[85vh] flex items-center pt-20 overflow-visible pb-0">
+        {/* Carousel Background */}
+        <div className="absolute inset-0 z-0">
+          {heroImages.map((image, i) => (
+            <img
+              key={i}
+              src={image}
+              alt={`Studio ${i + 1}`}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                animation: `fadeInOut 16s ease-in-out ${i * 4}s infinite`,
+              }}
+            />
+          ))}
+          <style>{`
+            @keyframes fadeInOut {
+              0%, 100% { opacity: 0; }
+              25% { opacity: 1; }
+              75% { opacity: 1; }
+            }
+          `}</style>
+        </div>
+
+        {/* Animated overlay elements */}
+        <div className="absolute inset-0 z-5">
           <div className="absolute top-0 left-0 w-96 h-96 bg-amber-600 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500 rounded-full mix-blend-screen filter blur-3xl opacity-5 animate-blob animation-delay-2000"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-5" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black z-5" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -63,16 +97,24 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Right - Drum Kit Image */}
-          <div className="hidden md:flex justify-end">
-            <div className="relative w-96 h-96">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F3ffd311c1c884c6186473f7187f162a1%2Fd17ee37098924cfa8caa86e7058e9e9c?format=webp&width=800&height=1200"
-                alt="Blue sparkle drum kit"
-                className="w-full h-full object-contain drop-shadow-2xl"
-              />
-            </div>
-          </div>
+          {/* Right - Hidden on md+ due to background carousel */}
+          <div className="hidden"></div>
+        </div>
+
+        {/* Wavy Shape Divider */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-amber-900 z-20">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z"
+              fill="currentColor"
+              className="text-amber-900"
+            />
+          </svg>
         </div>
       </section>
 
@@ -108,8 +150,12 @@ const Index = () => {
       <section className="bg-black py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-800 rounded-lg h-96 flex items-center justify-center">
-              <span className="text-gray-600">Add studio interior or Norbert portrait photo</span>
+            <div className="rounded-lg h-96 overflow-hidden">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F3ffd311c1c884c6186473f7187f162a1%2Fd17ee37098924cfa8caa86e7058e9e9c?format=webp&width=800&height=1200"
+                alt="Studio drum kit"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-4">
@@ -146,22 +192,30 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {[
-              { icon: "🎙️", title: "Recording Sessions", desc: "State-of-the-art multi-track recording for solo artists, bands, vocalists, and voice-over work. All genres welcome." },
-              { icon: "🎚️", title: "Mixing & Mastering", desc: "Professional mixing and mastering that blends vintage analog warmth with modern digital precision. Radio-ready results." },
-              { icon: "🎵", title: "Music Production", desc: "Full song production from concept to final mix. Beat building, arrangement, instrumentation, and creative direction." },
-              { icon: "🏠", title: "Studio Rental", desc: "Rent our fully equipped facility by the hour or by the day. Perfect for rehearsals, independent sessions, and podcasts." },
+              { icon: "🎙️", title: "Recording Sessions", desc: "State-of-the-art multi-track recording for solo artists, bands, vocalists, and voice-over work. All genres welcome.", img: heroImages[0] },
+              { icon: "🎚️", title: "Mixing & Mastering", desc: "Professional mixing and mastering that blends vintage analog warmth with modern digital precision. Radio-ready results.", img: heroImages[1] },
+              { icon: "🎵", title: "Music Production", desc: "Full song production from concept to final mix. Beat building, arrangement, instrumentation, and creative direction.", img: heroImages[2] },
+              { icon: "🏠", title: "Studio Rental", desc: "Rent our fully equipped facility by the hour or by the day. Perfect for rehearsals, independent sessions, and podcasts.", img: heroImages[3] },
             ].map((service, i) => (
               <div
                 key={i}
-                className="group relative bg-gradient-to-br from-slate-900 to-black border border-amber-700/50 p-6 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden"
+                className="group relative bg-gradient-to-br from-slate-900 to-black border border-amber-700/50 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/0 to-amber-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span className="text-5xl block mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</span>
-                <h3 className="font-bold text-white mb-3 text-lg group-hover:text-amber-300 transition-colors">{service.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 group-hover:text-gray-300 transition-colors">{service.desc}</p>
-                <Link to="/services" className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-300 text-sm font-bold group-hover:gap-3 transition-all">
-                  Learn More <span>→</span>
-                </Link>
+                <div className="relative h-40 overflow-hidden mb-4">
+                  <img
+                    src={service.img}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-5xl block mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</span>
+                  <h3 className="font-bold text-white mb-3 text-lg group-hover:text-amber-300 transition-colors">{service.title}</h3>
+                  <p className="text-gray-400 text-sm mb-4 group-hover:text-gray-300 transition-colors">{service.desc}</p>
+                  <Link to="/services" className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-300 text-sm font-bold group-hover:gap-3 transition-all">
+                    Learn More <span>→</span>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -178,91 +232,212 @@ const Index = () => {
       </section>
 
       {/* SOUNDCLOUD FEATURE */}
-      <section className="bg-black py-20 border-y border-amber-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
-              <span className="text-amber-500 text-xs font-bold">HEAR THE WORK</span>
+      <section className="bg-gradient-to-b from-black to-slate-900 py-24 border-y border-amber-900 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-600 rounded-full mix-blend-screen filter blur-3xl opacity-5"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+            {/* Left Content */}
+            <div>
+              <div className="inline-block px-4 py-2 bg-gradient-to-r from-amber-900 to-amber-800 rounded-full mb-6 border border-amber-700">
+                <span className="text-amber-300 text-xs font-bold tracking-widest">🎵 IMMERSE YOURSELF</span>
+              </div>
+              <h2 className="font-serif text-5xl md:text-6xl text-white font-bold mb-6 leading-tight">
+                Experience the<br /><span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">Sound of Excellence</span>
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed mb-6">
+                Step into Big Mama Productions and discover what happens when legendary musicianship meets world-class recording technology. Every track tells a story of passion, precision, and professional mastery.
+              </p>
+              <p className="text-gray-500 mb-8 leading-relaxed">
+                From soul-stirring vocals to intricate instrumentation, our portfolio showcases the diverse talent that flows through our studio. Press play and let our recordings transport you.
+              </p>
+
+              {/* Feature Pills */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {[
+                  { icon: "🎙️", label: "Professional Recording" },
+                  { icon: "🎧", label: "Studio Quality" },
+                  { icon: "🎵", label: "Multiple Genres" },
+                  { icon: "⭐", label: "Award Winning" },
+                ].map((feature, i) => (
+                  <div
+                    key={i}
+                    className="group px-4 py-3 bg-gradient-to-r from-amber-900/20 to-transparent border border-amber-700/50 rounded-full hover:border-amber-500 hover:bg-gradient-to-r hover:from-amber-900/40 hover:to-amber-800/20 transition-all duration-300 flex items-center gap-2"
+                  >
+                    <span className="text-xl group-hover:scale-110 transition-transform">{feature.icon}</span>
+                    <span className="text-amber-300 text-sm font-semibold">{feature.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://soundcloud.com/big-mama-studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative bg-gradient-to-r from-amber-600 to-amber-500 text-black font-bold px-8 py-4 hover:shadow-2xl hover:shadow-amber-600/50 transition-all duration-300 text-center overflow-hidden rounded"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <Music className="w-5 h-5" />
+                    Browse All Tracks
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </a>
+              </div>
             </div>
-            <h2 className="font-serif text-4xl text-white font-bold mb-4">Listen to Real Recordings From Big Mama Productions</h2>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-              Every track on our SoundCloud is a testament to what's possible when passion meets a professional studio environment. Press play and hear Knoxville's sound.
-            </p>
+
+            {/* Right - Audio Visual */}
+            <div className="hidden lg:flex justify-center items-center">
+              <div className="relative w-80 h-80">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-amber-900/20 rounded-3xl blur-2xl"></div>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2Fe6756a560ec045bfb1c7f24d1fc3e2ba?format=webp&width=800&height=1200"
+                  alt="Professional Audio Equipment"
+                  className="relative w-full h-full object-contain drop-shadow-2xl"
+                />
+              </div>
+            </div>
           </div>
 
           {/* Featured Tracks */}
-          <div className="space-y-8">
-            {/* Track 1 - Lizabeth Alabama Mix */}
-            <div className="bg-slate-900 rounded-lg overflow-hidden border border-amber-700 hover:border-amber-500 transition-colors">
-              <iframe
-                width="100%"
-                height="300"
-                scrolling="no"
-                frameBorder="no"
-                allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/big-mama-studio/lizabeth-alabama-mixmp3&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-              />
+          <div className="mt-20">
+            <style>{`
+              .audio-player-wrapper {
+                position: relative;
+                background: linear-gradient(135deg, rgba(120, 53, 15, 0.1) 0%, rgba(180, 83, 9, 0.05) 100%);
+                border-radius: 50px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                border: 2px solid rgba(217, 119, 6, 0.4);
+                max-width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+              }
+
+              .audio-player-wrapper:hover {
+                border-color: rgba(217, 119, 6, 0.8);
+                box-shadow: 0 10px 30px rgba(217, 119, 6, 0.25), inset 0 0 20px rgba(217, 119, 6, 0.1);
+                transform: translateY(-2px);
+                background: linear-gradient(135deg, rgba(120, 53, 15, 0.2) 0%, rgba(180, 83, 9, 0.12) 100%);
+              }
+
+              .audio-player-wrapper iframe {
+                display: block !important;
+                border-radius: 50px !important;
+                height: 70px !important;
+                width: 100% !important;
+                border: none !important;
+              }
+
+              /* Custom scrollbar for SoundCloud player */
+              .audio-player-wrapper ::-webkit-scrollbar {
+                width: 4px;
+                height: 4px;
+              }
+
+              .audio-player-wrapper ::-webkit-scrollbar-track {
+                background: rgba(30, 41, 59, 0.3);
+                border-radius: 10px;
+              }
+
+              .audio-player-wrapper ::-webkit-scrollbar-thumb {
+                background: rgba(217, 119, 6, 0.6);
+                border-radius: 10px;
+              }
+
+              .audio-player-wrapper ::-webkit-scrollbar-thumb:hover {
+                background: rgba(217, 119, 6, 0.8);
+              }
+
+              @keyframes audioGlow {
+                0%, 100% { box-shadow: 0 10px 30px rgba(217, 119, 6, 0.15), inset 0 0 20px rgba(217, 119, 6, 0.05); }
+                50% { box-shadow: 0 10px 35px rgba(217, 119, 6, 0.3), inset 0 0 25px rgba(217, 119, 6, 0.1); }
+              }
+
+              .audio-player-wrapper.playing {
+                animation: audioGlow 2s ease-in-out infinite;
+              }
+            `}</style>
+
+            <div className="text-center mb-12">
+              <h3 className="font-serif text-3xl text-white font-bold mb-2">Featured Tracks</h3>
+              <p className="text-gray-400">Explore our latest recordings and productions</p>
             </div>
 
-            {/* Track 2 - Mean MIX */}
-            <div className="bg-slate-900 rounded-lg overflow-hidden border border-amber-700 hover:border-amber-500 transition-colors">
-              <iframe
-                width="100%"
-                height="300"
-                scrolling="no"
-                frameBorder="no"
-                allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495131&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-              />
+            <div className="grid grid-cols-1 gap-4">
+              {/* Track 1 - Lizabeth Alabama Mix */}
+              <div className="audio-player-wrapper">
+                <iframe
+                  width="100%"
+                  height="70"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay; encrypted-media"
+                  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/big-mama-studio/lizabeth-alabama-mixmp3&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+                />
+              </div>
+
+              {/* Track 2 - Mean MIX */}
+              <div className="audio-player-wrapper">
+                <iframe
+                  width="100%"
+                  height="70"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay; encrypted-media"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495131&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+                />
+              </div>
+
+              {/* Track 3 - Suds In The Bucket MIX */}
+              <div className="audio-player-wrapper">
+                <iframe
+                  width="100%"
+                  height="70"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay; encrypted-media"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495116&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+                />
+              </div>
+
+              {/* Track 4 - Three Wooden Crosses */}
+              <div className="audio-player-wrapper">
+                <iframe
+                  width="100%"
+                  height="70"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay; encrypted-media"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/342915687&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+                />
+              </div>
+
+              {/* Track 5 - John Arnett Mixes Playlist */}
+              <div className="audio-player-wrapper">
+                <iframe
+                  width="100%"
+                  height="70"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay; encrypted-media"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/353605341&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+                />
+              </div>
             </div>
 
-            {/* Track 3 - Suds In The Bucket MIX */}
-            <div className="bg-slate-900 rounded-lg overflow-hidden border border-amber-700 hover:border-amber-500 transition-colors">
-              <iframe
-                width="100%"
-                height="300"
-                scrolling="no"
-                frameBorder="no"
-                allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495116&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-              />
+            <div className="text-center mt-12">
+              <a
+                href="https://soundcloud.com/big-mama-studio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-gradient-to-r from-amber-600 to-amber-500 text-black font-bold px-10 py-4 hover:shadow-2xl hover:shadow-amber-600/50 transition-all duration-300 rounded text-lg"
+              >
+                <Music className="w-5 h-5 inline mr-2" />
+                View Full SoundCloud Profile
+              </a>
             </div>
-
-            {/* Track 4 - Three Wooden Crosses */}
-            <div className="bg-slate-900 rounded-lg overflow-hidden border border-amber-700 hover:border-amber-500 transition-colors">
-              <iframe
-                width="100%"
-                height="300"
-                scrolling="no"
-                frameBorder="no"
-                allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/342915687&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-              />
-            </div>
-
-            {/* Track 5 - John Arnett Mixes Playlist */}
-            <div className="bg-slate-900 rounded-lg overflow-hidden border border-amber-700 hover:border-amber-500 transition-colors">
-              <iframe
-                width="100%"
-                height="300"
-                scrolling="no"
-                frameBorder="no"
-                allow="autoplay; encrypted-media"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/353605341&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-              />
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <a
-              href="https://soundcloud.com/big-mama-studio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-amber-600 text-black font-bold px-10 py-4 hover:bg-amber-500 transition-colors text-lg"
-            >
-              <Music className="w-5 h-5 inline mr-2" />
-              Browse All Tracks on SoundCloud
-            </a>
           </div>
         </div>
       </section>
