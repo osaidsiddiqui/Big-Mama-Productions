@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import { Music, Phone } from "lucide-react";
+import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const genres = ["Soul", "R&B", "Gospel", "Hip-Hop", "Blues", "Country", "Jazz", "Rock", "Spoken Word", "Voiceover", "Indie", "Funk"];
+
+  const heroImages = [
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2Fd310a15a92894bbf88af34cab54040ee?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F95fd238fddf54a56b3cc8fea9c74a980?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F5796c91eaff3485daf13302fd86416b4?format=webp&width=800&height=1200",
+    "https://cdn.builder.io/api/v1/image/assets%2F399ff72cb63c41b2b30d489abe63daf6%2F9ddd5637cc41408ea7f08dc4ca669140?format=webp&width=800&height=1200",
+  ];
 
   const steps = [
     { num: 1, icon: "🎤", title: "Book Your Session", desc: "Contact us to schedule your recording date and discuss your project needs." },
@@ -16,12 +28,34 @@ const Index = () => {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 bg-gradient-to-b from-black via-slate-900 to-black overflow-visible pb-0">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
+      <section className="relative min-h-[85vh] flex items-center pt-20 overflow-visible pb-0">
+        {/* Carousel Background */}
+        <div className="absolute inset-0 z-0">
+          {heroImages.map((image, i) => (
+            <img
+              key={i}
+              src={image}
+              alt={`Studio ${i + 1}`}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                animation: `fadeInOut 16s ease-in-out ${i * 4}s infinite`,
+              }}
+            />
+          ))}
+          <style>{`
+            @keyframes fadeInOut {
+              0%, 100% { opacity: 0; }
+              25% { opacity: 1; }
+              75% { opacity: 1; }
+            }
+          `}</style>
+        </div>
+
+        {/* Animated overlay elements */}
+        <div className="absolute inset-0 z-5">
           <div className="absolute top-0 left-0 w-96 h-96 bg-amber-600 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500 rounded-full mix-blend-screen filter blur-3xl opacity-5 animate-blob animation-delay-2000"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-5" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black z-5" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -63,20 +97,12 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Right - Drum Kit Image */}
-          <div className="hidden md:flex justify-end">
-            <div className="relative w-96 h-96">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F3ffd311c1c884c6186473f7187f162a1%2Fd17ee37098924cfa8caa86e7058e9e9c?format=webp&width=800&height=1200"
-                alt="Blue sparkle drum kit"
-                className="w-full h-full object-contain drop-shadow-2xl"
-              />
-            </div>
-          </div>
+          {/* Right - Hidden on md+ due to background carousel */}
+          <div className="hidden"></div>
         </div>
 
         {/* Wavy Shape Divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-amber-900">
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-amber-900 z-20">
           <svg
             className="w-full h-full"
             viewBox="0 0 1200 120"
@@ -124,8 +150,12 @@ const Index = () => {
       <section className="bg-black py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="bg-gray-800 rounded-lg h-96 flex items-center justify-center">
-              <span className="text-gray-600">Add studio interior or Norbert portrait photo</span>
+            <div className="rounded-lg h-96 overflow-hidden">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F3ffd311c1c884c6186473f7187f162a1%2Fd17ee37098924cfa8caa86e7058e9e9c?format=webp&width=800&height=1200"
+                alt="Studio drum kit"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-4">
@@ -162,22 +192,30 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             {[
-              { icon: "🎙️", title: "Recording Sessions", desc: "State-of-the-art multi-track recording for solo artists, bands, vocalists, and voice-over work. All genres welcome." },
-              { icon: "🎚️", title: "Mixing & Mastering", desc: "Professional mixing and mastering that blends vintage analog warmth with modern digital precision. Radio-ready results." },
-              { icon: "🎵", title: "Music Production", desc: "Full song production from concept to final mix. Beat building, arrangement, instrumentation, and creative direction." },
-              { icon: "🏠", title: "Studio Rental", desc: "Rent our fully equipped facility by the hour or by the day. Perfect for rehearsals, independent sessions, and podcasts." },
+              { icon: "🎙️", title: "Recording Sessions", desc: "State-of-the-art multi-track recording for solo artists, bands, vocalists, and voice-over work. All genres welcome.", img: heroImages[0] },
+              { icon: "🎚️", title: "Mixing & Mastering", desc: "Professional mixing and mastering that blends vintage analog warmth with modern digital precision. Radio-ready results.", img: heroImages[1] },
+              { icon: "🎵", title: "Music Production", desc: "Full song production from concept to final mix. Beat building, arrangement, instrumentation, and creative direction.", img: heroImages[2] },
+              { icon: "🏠", title: "Studio Rental", desc: "Rent our fully equipped facility by the hour or by the day. Perfect for rehearsals, independent sessions, and podcasts.", img: heroImages[3] },
             ].map((service, i) => (
               <div
                 key={i}
-                className="group relative bg-gradient-to-br from-slate-900 to-black border border-amber-700/50 p-6 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden"
+                className="group relative bg-gradient-to-br from-slate-900 to-black border border-amber-700/50 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/0 to-amber-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span className="text-5xl block mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</span>
-                <h3 className="font-bold text-white mb-3 text-lg group-hover:text-amber-300 transition-colors">{service.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 group-hover:text-gray-300 transition-colors">{service.desc}</p>
-                <Link to="/services" className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-300 text-sm font-bold group-hover:gap-3 transition-all">
-                  Learn More <span>→</span>
-                </Link>
+                <div className="relative h-40 overflow-hidden mb-4">
+                  <img
+                    src={service.img}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-5xl block mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</span>
+                  <h3 className="font-bold text-white mb-3 text-lg group-hover:text-amber-300 transition-colors">{service.title}</h3>
+                  <p className="text-gray-400 text-sm mb-4 group-hover:text-gray-300 transition-colors">{service.desc}</p>
+                  <Link to="/services" className="inline-flex items-center gap-2 text-amber-500 hover:text-amber-300 text-sm font-bold group-hover:gap-3 transition-all">
+                    Learn More <span>→</span>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
