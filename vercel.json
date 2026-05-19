@@ -4,6 +4,7 @@
   "installCommand": "npm install",
   "framework": "vite",
   "outputDirectory": "dist",
+  "nodeVersion": "20.x",
   "headers": [
     {
       "source": "/(.*)",
@@ -27,11 +28,24 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains"
         }
       ]
     },
     {
-      "source": "/(.*)\\.(js|css|woff|woff2|eot|ttf|otf|svg)",
+      "source": "/(.*)\\.(js|css|woff|woff2|eot|ttf|otf|svg|png|jpg|jpeg|gif|webp)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/.*",
       "headers": [
         {
           "key": "Cache-Control",
@@ -45,5 +59,7 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }

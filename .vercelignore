@@ -1,9 +1,12 @@
 .git
 .gitignore
 README.md
-node_modules
+DEPLOYMENT.md
+QUICK_START_VERCEL.md
+VERCEL_SETUP_SUMMARY.md
 npm-debug.log
 .env.local
-.env
 .DS_Store
-dist
+src/**/*.test.ts
+src/**/*.test.tsx
+vitest.config.ts
