@@ -301,6 +301,57 @@ const Index = () => {
 
           {/* Featured Tracks */}
           <div className="mt-20">
+            <style>{`
+              .audio-player-wrapper {
+                position: relative;
+                background: linear-gradient(135deg, rgba(120, 53, 15, 0.1) 0%, rgba(180, 83, 9, 0.05) 100%);
+                border-radius: 12px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(180, 83, 9, 0.3);
+              }
+
+              .audio-player-wrapper:hover {
+                border-color: rgba(217, 119, 6, 0.6);
+                box-shadow: 0 20px 25px -5px rgba(217, 119, 6, 0.2);
+                transform: translateY(-2px);
+                background: linear-gradient(135deg, rgba(120, 53, 15, 0.15) 0%, rgba(180, 83, 9, 0.08) 100%);
+              }
+
+              .audio-player-wrapper iframe {
+                display: block;
+                border-radius: 8px;
+              }
+
+              /* Custom scrollbar for SoundCloud player */
+              .audio-player-wrapper ::-webkit-scrollbar {
+                width: 6px;
+              }
+
+              .audio-player-wrapper ::-webkit-scrollbar-track {
+                background: rgba(30, 41, 59, 0.5);
+                border-radius: 10px;
+              }
+
+              .audio-player-wrapper ::-webkit-scrollbar-thumb {
+                background: rgba(217, 119, 6, 0.5);
+                border-radius: 10px;
+              }
+
+              .audio-player-wrapper ::-webkit-scrollbar-thumb:hover {
+                background: rgba(217, 119, 6, 0.7);
+              }
+
+              @keyframes audioGlow {
+                0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.1); }
+                50% { box-shadow: 0 0 30px rgba(217, 119, 6, 0.2); }
+              }
+
+              .audio-player-wrapper.playing {
+                animation: audioGlow 2s ease-in-out infinite;
+              }
+            `}</style>
+
             <div className="text-center mb-12">
               <h3 className="font-serif text-3xl text-white font-bold mb-2">Featured Tracks</h3>
               <p className="text-gray-400">Explore our latest recordings and productions</p>
@@ -308,62 +359,62 @@ const Index = () => {
 
             <div className="grid grid-cols-1 gap-6">
               {/* Track 1 - Lizabeth Alabama Mix */}
-              <div className="group bg-slate-900 rounded-lg overflow-hidden border border-amber-700/50 hover:border-amber-500 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/20">
+              <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
                   height="300"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/big-mama-studio/lizabeth-alabama-mixmp3&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/big-mama-studio/lizabeth-alabama-mixmp3&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
                 />
               </div>
 
               {/* Track 2 - Mean MIX */}
-              <div className="group bg-slate-900 rounded-lg overflow-hidden border border-amber-700/50 hover:border-amber-500 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/20">
+              <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
                   height="300"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495131&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495131&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
                 />
               </div>
 
               {/* Track 3 - Suds In The Bucket MIX */}
-              <div className="group bg-slate-900 rounded-lg overflow-hidden border border-amber-700/50 hover:border-amber-500 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/20">
+              <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
                   height="300"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495116&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495116&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
                 />
               </div>
 
               {/* Track 4 - Three Wooden Crosses */}
-              <div className="group bg-slate-900 rounded-lg overflow-hidden border border-amber-700/50 hover:border-amber-500 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/20">
+              <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
                   height="300"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/342915687&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/342915687&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
                 />
               </div>
 
               {/* Track 5 - John Arnett Mixes Playlist */}
-              <div className="group bg-slate-900 rounded-lg overflow-hidden border border-amber-700/50 hover:border-amber-500 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/20">
+              <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
                   height="300"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/353605341&color=%23c9962b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/353605341&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
                 />
               </div>
             </div>
