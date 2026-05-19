@@ -1,73 +1,150 @@
-# Welcome to your Lovable project
+# Big Mama Productions Website
 
-## Project info
+Professional recording studio website built with React, Vite, and TypeScript.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Quick Start
 
-## How can I edit this code?
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn package manager
 
-There are several ways of editing your application.
+### Local Development
 
-**Use Lovable**
+```bash
+# Install dependencies
+npm install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+The app will run at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📁 Project Structure
 
-**Use GitHub Codespaces**
+```
+src/
+├── pages/           # Route pages (Home, About, Services, etc.)
+├── components/      # Reusable components (Header, Footer, Layout, etc.)
+├── App.tsx          # Main application component
+├── main.tsx         # Entry point
+└── index.css        # Global styles
+public/
+├── robots.txt       # SEO robots configuration
+└── sitemap.xml      # SEO sitemap
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🌍 Deployment to Vercel
 
-## What technologies are used for this project?
+### Automatic Deployment
 
-This project is built with:
+1. **Push to GitHub**
+   ```bash
+   git push origin main
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. **Connect to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Import Project"
+   - Select your GitHub repository
+   - Click "Import"
 
-## How can I deploy this project?
+3. **Configure Environment Variables** (if needed)
+   - In Vercel Dashboard → Settings → Environment Variables
+   - Add any variables from `.env.example`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+4. **Deploy**
+   - Vercel will automatically build and deploy on every push to main
+   - Your site will be live at `https://your-project.vercel.app`
 
-## Can I connect a custom domain to my Lovable project?
+### Manual Deployment
 
-Yes, you can!
+```bash
+# Install Vercel CLI
+npm install -g vercel
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+# Deploy
+vercel
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Connecting Custom Domain
+
+1. In Vercel Dashboard → Settings → Domains
+2. Add your custom domain (e.g., bigmamaproductions.com)
+3. Follow DNS configuration instructions from your domain provider
+4. Update domain nameservers or add DNS records
+
+## 🔧 Configuration Files
+
+- **vercel.json** - Vercel build and deployment configuration
+- **.vercelignore** - Files to ignore during Vercel deployment
+- **vite.config.ts** - Vite build configuration optimized for Vercel
+- **package.json** - Project dependencies and scripts
+
+## 📊 Build Info
+
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite 5
+- **Styling**: Tailwind CSS
+- **Router**: React Router v6
+- **UI Components**: Radix UI + shadcn/ui
+- **Forms**: React Hook Form + Zod validation
+
+## 🎨 Key Pages
+
+- `/` - Home/Landing page with portfolio
+- `/about` - Studio history and founder bio
+- `/services` - Recording, mixing, production, rental services
+- `/studio` - Studio gallery and equipment
+- `/portfolio` - Featured tracks and SoundCloud embeds
+- `/testimonials` - Artist reviews and Yelp links
+- `/contact` - Contact form and location info
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file for local development:
+
+```env
+VITE_APP_NAME=Big Mama Productions
+VITE_API_URL=https://api.example.com
+VITE_CONTACT_EMAIL=contact@bigmamaproductions.com
+```
+
+See `.env.example` for all available variables.
+
+## 📱 Features
+
+- ✅ Fully responsive design
+- ✅ SEO optimized (sitemap, robots.txt, meta tags)
+- ✅ SoundCloud player integration
+- ✅ Contact form with validation
+- ✅ Mobile navigation
+- ✅ Performance optimized (code splitting, lazy loading)
+- ✅ Accessibility compliant
+- ✅ Security headers configured
+
+## 🚢 Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+This creates an optimized production build in the `dist/` folder.
+
+## 🆘 Support
+
+For Vercel deployment issues:
+- [Vercel Documentation](https://vercel.com/docs)
+- [Vite Documentation](https://vitejs.dev)
+- Check GitHub Actions logs for build errors
+
+## 📄 License
+
+© 2025 Big Mama Productions. All rights reserved.
