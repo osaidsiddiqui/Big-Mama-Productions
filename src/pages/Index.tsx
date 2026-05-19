@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 bg-gradient-to-b from-black via-slate-900 to-black overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center pt-20 bg-gradient-to-b from-black via-slate-900 to-black overflow-visible pb-0">
         {/* Animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-96 h-96 bg-amber-600 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob"></div>
@@ -73,6 +73,22 @@ const Index = () => {
               />
             </div>
           </div>
+        </div>
+
+        {/* Wavy Shape Divider */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-amber-900">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z"
+              fill="currentColor"
+              className="text-amber-900"
+            />
+          </svg>
         </div>
       </section>
 
