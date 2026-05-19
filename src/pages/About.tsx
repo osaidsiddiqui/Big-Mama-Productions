@@ -1,89 +1,192 @@
-import { Instagram, Facebook } from "lucide-react";
-import { Target, Music, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import FloatingNotes from "@/components/FloatingNotes";
-import lacyPortrait from "@/assets/lacy-portrait.jpg";
 
 const About = () => {
+  const timeline = [
+    { era: "1970s", title: "Studio Founded", desc: "Studio founded by Norbert Stovall in Knoxville, TN. First artists record soul and gospel tracks." },
+    { era: "1980s", title: "Regional Growth", desc: "Reputation grows across East Tennessee. R&B and blues artists make Big Mama their home studio." },
+    { era: "1990s", title: "Genre Expansion", desc: "Expansion of services. Hip-hop and contemporary R&B production added. Regional recognition grows." },
+    { era: "2000s", title: "Digital Integration", desc: "Digital era integration. Modern recording technology added while preserving analog character." },
+    { era: "Today", title: "Living Legacy", desc: "Still recording, still producing, still serving the Knoxville music community with the same passion." },
+  ];
+
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative rainbow-gradient animate-gradient-shift py-20 md:py-28 overflow-hidden">
-        <FloatingNotes variant="light" count={5} />
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-white mb-4" style={{ textShadow: "0 2px 15px rgba(0,0,0,0.2)" }}>
-            About Lacy
-          </h1>
+      <section className="bg-black min-h-[50vh] flex items-center pt-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
+              <span className="text-amber-500 text-xs font-bold tracking-widest">HOME / ABOUT</span>
+            </div>
+            <h1 className="font-serif text-5xl md:text-6xl text-white font-bold mb-6">
+              The Story Behind Big Mama Productions
+            </h1>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Five decades of music, community, and craft — all rooted in Knoxville, Tennessee.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Full About */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* Studio History */}
+      <section className="bg-slate-900 py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start max-w-5xl mx-auto">
-            <div className="flex justify-center">
-              <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-transparent max-w-md" style={{ borderImage: "linear-gradient(135deg, #FF3B3B, #FF7A1A, #FFD600, #2DC96E, #1A73E8, #8B2BE2) 1" }}>
-                <img src={lacyPortrait} alt="Lacy, music teacher" className="w-full object-cover" loading="lazy" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="md:order-2">
+              <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-4">
+                <span className="text-amber-500 text-xs font-bold">OUR HISTORY</span>
+              </div>
+              <h2 className="font-serif text-4xl text-white font-bold mb-6">From the 1970s to Today — A Living Legacy</h2>
+
+              <div className="space-y-4 text-gray-400 leading-relaxed">
+                <p>
+                  Big Mama Productions was born in Knoxville, Tennessee during the creative explosion of the 1970s. Founded by Norbert Stovall, the studio quickly became a trusted home for local and regional artists who needed more than just a room with microphones — they needed a place that understood their music and respected their vision.
+                </p>
+
+                <p>
+                  Through the 1980s and 1990s, Big Mama Recording Studios built a reputation that extended well beyond Knoxville. Artists from across East Tennessee and neighboring states made the drive to Highland View Drive knowing they'd leave with something special. The studio's walls absorbed decades of soul, gospel, R&B, hip-hop, and blues — every genre finding its voice on our equipment.
+                </p>
+
+                <p>
+                  Today, Big Mama Productions continues that same tradition. The studio has evolved with the times — updated gear, modern digital workflow — but the soul of the place hasn't changed. It's still about the music, the artist, and the community. That's the Big Mama way.
+                </p>
               </div>
             </div>
-            <div>
-              <h2 className="font-heading text-3xl md:text-4xl font-extrabold mb-6 rainbow-gradient-text">Welcome to Mississippi Seoul</h2>
-              <div className="space-y-4 text-foreground/80 text-sm leading-relaxed">
-                <p>Welcome to Mississippi Seoul Music Lessons — I'm Lacy, a private music educator and performer based in Manhattan, NY. My studio offers one-on-one private instruction in piano, voice, guitar, and ukulele for students of all ages and skill levels.</p>
-                <p>My teaching journey began with a deep love for music that spans classical training, contemporary performance, and cross-cultural musical traditions. The name "Mississippi Seoul" reflects my eclectic musical roots and the diverse influences that shape my teaching — from the blues and soul traditions of the American South to the vibrant contemporary music scenes of the world.</p>
-                <p>I believe that every person has music inside them — my job is simply to help you find it and share it. Whether you're a child taking your very first music lesson, a teenager who wants to start a band, or an adult who always dreamed of playing an instrument, I create a personalized, joyful, and encouraging learning experience tailored specifically to you.</p>
-                <p>My lessons combine solid technical foundations with the music you actually love — because when students are excited about what they're learning, they practice more, grow faster, and fall in love with music for life.</p>
-              </div>
+
+            <div className="md:order-1 h-96 bg-gray-800 rounded-lg flex items-center justify-center">
+              <span className="text-gray-600">Add vintage studio photo or historical image</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Teaching Philosophy */}
-      <section className="py-16 md:py-20 section-yellow">
+      {/* Owner Bio */}
+      <section className="bg-black py-20">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-rainbow-orange text-center mb-12">Teaching Philosophy</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="h-96 bg-gray-800 rounded-lg flex items-center justify-center">
+              <span className="text-gray-600">Add Norbert Stovall portrait photo here</span>
+            </div>
+
+            <div>
+              <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-4">
+                <span className="text-amber-500 text-xs font-bold">MEET THE FOUNDER</span>
+              </div>
+              <h2 className="font-serif text-4xl text-white font-bold mb-6">Norbert Stovall — Producer, Engineer & Music Community Pillar</h2>
+
+              <div className="space-y-4 text-gray-400 leading-relaxed mb-8">
+                <p>
+                  Norbert Stovall is the heart and soul of Big Mama Productions. With over five decades of hands-on experience as a recording engineer, music producer, and artist himself, Norbert brings a rare combination of technical mastery and deep musical instinct to every session that walks through the studio door.
+                </p>
+
+                <p>
+                  His philosophy is simple: every artist deserves to be heard clearly, recorded honestly, and treated with respect. Whether you're a first-time vocalist or a veteran band, Norbert and his team will work tirelessly to help you sound your best.
+                </p>
+
+                <p>
+                  Beyond the studio, Norbert has been a longtime contributor to Knoxville's music community — mentoring young artists, supporting local events, and keeping independent music alive in East Tennessee.
+                </p>
+              </div>
+
+              <p className="text-gray-400 mb-6">
+                <strong className="text-amber-500">Want to work with Norbert directly?</strong>
+              </p>
+              <Link
+                to="/contact"
+                className="inline-block bg-amber-600 text-black font-bold px-8 py-3 hover:bg-amber-500 transition-colors"
+              >
+                Get in Touch
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Studio Details */}
+      <section className="bg-slate-900 py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
+              <span className="text-amber-500 text-xs font-bold">THE STUDIO</span>
+            </div>
+            <h2 className="font-serif text-4xl text-white font-bold">A Professional Environment Built for Great Music</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Target, color: "border-rainbow-red", title: "Student-Centered Learning", desc: "Lessons are built around your goals, your interests, and your pace — not a generic curriculum." },
-              { icon: Music, color: "border-rainbow-blue", title: "Music You Love", desc: "Lacy believes students learn best when they're playing music that excites them. Your favorite songs are always part of the plan." },
-              { icon: Star, color: "border-rainbow-green", title: "Confidence Builder", desc: "Every lesson is designed to celebrate progress, build musical confidence, and create a lifelong love of making music." },
+              {
+                icon: "🎚️",
+                title: "Professional Equipment",
+                desc: "Vintage and modern gear combined — analog warmth meets digital precision. Microphones, preamps, monitors, and consoles selected for optimal sound.",
+              },
+              {
+                icon: "🎵",
+                title: "Comfortable Recording Environment",
+                desc: "Designed so artists feel at home. Great acoustics, relaxed atmosphere, and an engineer who listens.",
+              },
+              {
+                icon: "📍",
+                title: "Conveniently Located",
+                desc: "418 Highland View Drive, Knoxville, TN 37920 — easy to find, private, and fully equipped for your session.",
+              },
             ].map((item, i) => (
-              <div key={i} className={`feature-card ${item.color}`}>
-                <item.icon className="w-8 h-8 mb-3 text-foreground/70" />
-                <h3 className="font-heading text-lg font-bold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
+              <div key={i} className="bg-black border border-amber-700 p-8 rounded-lg hover:border-amber-500 transition-colors text-center">
+                <span className="text-4xl block mb-4">{item.icon}</span>
+                <h3 className="font-bold text-white mb-3 text-lg">{item.title}</h3>
+                <p className="text-gray-400">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Social */}
-      <section className="py-16 md:py-20 section-pink">
-        <div className="container mx-auto px-4 text-center max-w-2xl">
-          <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-rainbow-pink mb-4">Follow Along on Instagram</h2>
-          <p className="text-foreground/80 mb-8">
-            See what's happening in the studio, get music tips, and follow the Mississippi Seoul musical journey on Instagram and Facebook.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://www.instagram.com/mississippi.seoul.music/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pill-btn bg-rainbow-pink text-white hover:opacity-90 flex items-center gap-2"
-            >
-              <Instagram className="w-5 h-5" /> @mississippi.seoul.music
-            </a>
-            <a
-              href="https://www.facebook.com/lacy.quin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pill-btn bg-rainbow-blue text-white hover:opacity-90 flex items-center gap-2"
-            >
-              <Facebook className="w-5 h-5" /> Facebook
-            </a>
+      {/* Timeline */}
+      <section className="bg-black py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
+              <span className="text-amber-500 text-xs font-bold">MILESTONES</span>
+            </div>
+            <h2 className="font-serif text-4xl text-white font-bold">Five Decades of Sound</h2>
           </div>
+
+          <div className="max-w-3xl mx-auto">
+            {timeline.map((item, i) => (
+              <div key={i} className="flex gap-8 mb-12 relative">
+                {/* Timeline dot */}
+                <div className="flex flex-col items-center">
+                  <div className="w-6 h-6 bg-amber-600 rounded-full border-4 border-black"></div>
+                  {i < timeline.length - 1 && <div className="w-1 h-24 bg-amber-600 mt-2"></div>}
+                </div>
+
+                {/* Content */}
+                <div className="pb-8">
+                  <div className="inline-block px-3 py-1 bg-amber-900 rounded mb-2">
+                    <span className="text-amber-500 text-xs font-bold">{item.era}</span>
+                  </div>
+                  <h3 className="text-white font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-gray-400">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-slate-900 py-16 border-t border-amber-900">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-3xl text-white font-bold mb-4">Come See the Studio for Yourself</h2>
+          <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+            Schedule a studio tour or book your first session with Big Mama Productions.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-block bg-amber-600 text-black font-bold px-8 py-3 hover:bg-amber-500 transition-colors"
+          >
+            Contact Us
+          </Link>
         </div>
       </section>
     </Layout>

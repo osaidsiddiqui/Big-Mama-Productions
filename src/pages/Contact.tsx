@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { Phone, Instagram, Facebook, MapPin, Clock, CheckCircle } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import Layout from "@/components/Layout";
-import FloatingNotes from "@/components/FloatingNotes";
 import { z } from "zod";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
+  phone: z.string().trim().min(1, "Phone is required").max(20),
   email: z.string().trim().email("Invalid email").max(255),
-  phone: z.string().max(20).optional(),
-  instrument: z.string().min(1, "Please select an instrument"),
-  age: z.string().trim().min(1, "This field is required").max(200),
-  experience: z.string().min(1, "Please select experience level"),
-  preferredTimes: z.string().max(500).optional(),
-  message: z.string().trim().min(1, "Please share your goals").max(2000),
+  service: z.string().min(1, "Please select a service"),
+  genre: z.string().max(200).optional(),
+  message: z.string().trim().min(1, "Please share your project details").max(2000),
 });
 
 type FormData = z.infer<typeof contactSchema>;
@@ -35,6 +32,11 @@ const Contact = () => {
     }
     setErrors({});
     setSubmitted(true);
+    // Reset form after 2 seconds
+    setTimeout(() => {
+      setForm({});
+      setSubmitted(false);
+    }, 2000);
   };
 
   const updateField = (field: string, value: string) => {
@@ -43,175 +45,236 @@ const Contact = () => {
   };
 
   const inputClass = (field: string) =>
-    `w-full rounded-lg border px-4 py-3 text-sm font-body focus:outline-none focus:ring-2 focus:ring-rainbow-blue transition-all ${
-      errors[field] ? "border-rainbow-red" : "border-border"
+    `w-full rounded px-4 py-3 text-sm bg-slate-800 border transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+      errors[field] ? "border-red-600" : "border-amber-700"
     }`;
 
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative rainbow-gradient animate-gradient-shift py-20 md:py-28 overflow-hidden">
-        <FloatingNotes variant="light" count={5} />
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-white mb-4" style={{ textShadow: "0 2px 15px rgba(0,0,0,0.2)" }}>
-            Book a Lesson
-          </h1>
-          <p className="text-white/90 font-display text-lg">Reach out today — your first lesson is just one message away.</p>
-        </div>
-      </section>
-
-      {/* Info Cards */}
-      <section className="py-10 bg-background">
+      <section className="bg-black min-h-[50vh] flex items-center pt-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto -mt-16 relative z-20">
-            <a href="tel:5125347753" className="bg-rainbow-red text-white rounded-2xl p-6 text-center shadow-lg hover:opacity-90 transition-opacity">
-              <Phone className="w-8 h-8 mx-auto mb-2" />
-              <h3 className="font-heading font-bold">Call or Text</h3>
-              <p className="font-display text-lg font-bold mt-1">(512) 534-7753</p>
-            </a>
-            <a href="https://www.instagram.com/mississippi.seoul.music/" target="_blank" rel="noopener noreferrer" className="bg-rainbow-pink text-white rounded-2xl p-6 text-center shadow-lg hover:opacity-90 transition-opacity">
-              <Instagram className="w-8 h-8 mx-auto mb-2" />
-              <h3 className="font-heading font-bold">Instagram</h3>
-              <p className="font-display text-sm mt-1">@mississippi.seoul.music</p>
-            </a>
-            <a href="https://www.facebook.com/lacy.quin" target="_blank" rel="noopener noreferrer" className="bg-rainbow-blue text-white rounded-2xl p-6 text-center shadow-lg hover:opacity-90 transition-opacity">
-              <Facebook className="w-8 h-8 mx-auto mb-2" />
-              <h3 className="font-heading font-bold">Facebook</h3>
-              <p className="font-display text-sm mt-1">Lacy Quin</p>
-            </a>
+          <div className="text-center mb-12">
+            <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
+              <span className="text-amber-500 text-xs font-bold tracking-widest">HOME / CONTACT</span>
+            </div>
+            <h1 className="font-serif text-5xl md:text-6xl text-white font-bold mb-6">
+              Let's Make Something Great Together
+            </h1>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Book a session, ask a question, or just say hello. The Big Mama Productions team is ready to hear from you.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Form + Info */}
-      <section className="py-12 md:py-20 bg-background">
+      {/* Contact Form & Info */}
+      <section className="bg-slate-900 py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
-            {/* Form */}
-            <div className="lg:col-span-3">
-              <div className="bg-card rounded-2xl shadow-lg p-8 rainbow-border-top">
-                {submitted ? (
-                  <div className="text-center py-12">
-                    <div className="flex justify-center gap-2 text-3xl mb-4 animate-bounce-note">
-                      🎵 🎶 🎵
-                    </div>
-                    <CheckCircle className="w-16 h-16 text-rainbow-green mx-auto mb-4" />
-                    <h3 className="font-heading text-2xl font-extrabold mb-2">Thanks for reaching out!</h3>
-                    <p className="text-muted-foreground">Lacy will be in touch within 24–48 hours.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {/* Contact Form */}
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6">Send Us a Message</h2>
+
+              {submitted ? (
+                <div className="bg-green-900 border border-green-600 text-green-100 p-6 rounded-lg text-center">
+                  <p className="text-lg font-bold mb-2">✓ Message Sent!</p>
+                  <p>Thank you for reaching out. We'll get back to you soon.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-2">Full Name *</label>
+                    <input
+                      type="text"
+                      className={inputClass("name")}
+                      placeholder="Your name"
+                      value={form.name || ""}
+                      onChange={(e) => updateField("name", e.target.value)}
+                    />
+                    {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label className="font-display text-sm font-semibold mb-1 block">Full Name *</label>
-                      <input className={inputClass("name")} value={form.name || ""} onChange={(e) => updateField("name", e.target.value)} />
-                      {errors.name && <p className="text-rainbow-red text-xs mt-1">{errors.name}</p>}
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="font-display text-sm font-semibold mb-1 block">Email *</label>
-                        <input type="email" className={inputClass("email")} value={form.email || ""} onChange={(e) => updateField("email", e.target.value)} />
-                        {errors.email && <p className="text-rainbow-red text-xs mt-1">{errors.email}</p>}
-                      </div>
-                      <div>
-                        <label className="font-display text-sm font-semibold mb-1 block">Phone</label>
-                        <input type="tel" className={inputClass("phone")} value={form.phone || ""} onChange={(e) => updateField("phone", e.target.value)} />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="font-display text-sm font-semibold mb-1 block">Instrument Interest *</label>
-                        <select className={inputClass("instrument")} value={form.instrument || ""} onChange={(e) => updateField("instrument", e.target.value)}>
-                          <option value="">Select...</option>
-                          <option>Piano</option>
-                          <option>Voice / Singing</option>
-                          <option>Guitar</option>
-                          <option>Ukulele</option>
-                          <option>Multiple / Not Sure Yet</option>
-                        </select>
-                        {errors.instrument && <p className="text-rainbow-red text-xs mt-1">{errors.instrument}</p>}
-                      </div>
-                      <div>
-                        <label className="font-display text-sm font-semibold mb-1 block">Experience Level *</label>
-                        <select className={inputClass("experience")} value={form.experience || ""} onChange={(e) => updateField("experience", e.target.value)}>
-                          <option value="">Select...</option>
-                          <option>Complete Beginner</option>
-                          <option>Some Experience</option>
-                          <option>Intermediate</option>
-                          <option>Advanced</option>
-                        </select>
-                        {errors.experience && <p className="text-rainbow-red text-xs mt-1">{errors.experience}</p>}
-                      </div>
-                    </div>
-                    <div>
-                      <label className="font-display text-sm font-semibold mb-1 block">Age or Who the Lessons Are For *</label>
-                      <input className={inputClass("age")} value={form.age || ""} onChange={(e) => updateField("age", e.target.value)} placeholder="e.g., 8-year-old daughter, adult beginner" />
-                      {errors.age && <p className="text-rainbow-red text-xs mt-1">{errors.age}</p>}
-                    </div>
-                    <div>
-                      <label className="font-display text-sm font-semibold mb-1 block">Preferred Days/Times</label>
-                      <input className={inputClass("preferredTimes")} value={form.preferredTimes || ""} onChange={(e) => updateField("preferredTimes", e.target.value)} placeholder="e.g., Weekday afternoons, Saturday mornings" />
-                    </div>
-                    <div>
-                      <label className="font-display text-sm font-semibold mb-1 block">Message / Goals *</label>
-                      <textarea className={`${inputClass("message")} min-h-[100px]`} value={form.message || ""} onChange={(e) => updateField("message", e.target.value)} placeholder="Tell us about your musical goals..." />
-                      {errors.message && <p className="text-rainbow-red text-xs mt-1">{errors.message}</p>}
-                    </div>
-                    <button type="submit" className="pill-btn rainbow-gradient text-white w-full justify-center text-sm hover:opacity-90 shadow-lg">
-                      Send Message →
-                    </button>
-                  </form>
-                )}
-              </div>
+
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-2">Phone Number *</label>
+                    <input
+                      type="tel"
+                      className={inputClass("phone")}
+                      placeholder="(865) 000-0000"
+                      value={form.phone || ""}
+                      onChange={(e) => updateField("phone", e.target.value)}
+                    />
+                    {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-2">Email Address *</label>
+                    <input
+                      type="email"
+                      className={inputClass("email")}
+                      placeholder="you@example.com"
+                      value={form.email || ""}
+                      onChange={(e) => updateField("email", e.target.value)}
+                    />
+                    {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-2">Service Interested In *</label>
+                    <select
+                      className={inputClass("service")}
+                      value={form.service || ""}
+                      onChange={(e) => updateField("service", e.target.value)}
+                    >
+                      <option value="">Select a service...</option>
+                      <option value="recording">Recording Session</option>
+                      <option value="mixing">Mixing & Mastering</option>
+                      <option value="production">Music Production</option>
+                      <option value="rental">Studio Rental</option>
+                      <option value="other">General Inquiry / Other</option>
+                    </select>
+                    {errors.service && <p className="text-red-400 text-xs mt-1">{errors.service}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-2">Genre / Style of Music</label>
+                    <input
+                      type="text"
+                      className={inputClass("genre")}
+                      placeholder="e.g., Soul, Hip-Hop, Gospel"
+                      value={form.genre || ""}
+                      onChange={(e) => updateField("genre", e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-gray-300 mb-2">Project Details / Message *</label>
+                    <textarea
+                      className={`${inputClass("message")} resize-none`}
+                      placeholder="Tell us about your project..."
+                      rows={5}
+                      value={form.message || ""}
+                      onChange={(e) => updateField("message", e.target.value)}
+                    />
+                    {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-amber-600 text-black font-bold py-3 rounded hover:bg-amber-500 transition-colors"
+                  >
+                    Send My Message
+                  </button>
+                </form>
+              )}
             </div>
 
-            {/* Info Panel */}
-            <div className="lg:col-span-2">
-              <div className="rainbow-gradient rounded-2xl p-8 text-white relative overflow-hidden h-full">
-                <FloatingNotes variant="light" count={4} />
-                <div className="relative z-10 space-y-6">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-heading font-bold">Location</h4>
-                      <p className="text-white/80 text-sm">Manhattan, NY (exact address shared upon booking)</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-heading font-bold">Phone</h4>
-                      <a href="tel:5125347753" className="text-white/80 text-sm hover:text-white">(512) 534-7753</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-heading font-bold">Response Time</h4>
-                      <p className="text-white/80 text-sm">Typically within 24–48 hours</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Instagram className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-heading font-bold">Instagram</h4>
-                      <a href="https://www.instagram.com/mississippi.seoul.music/" target="_blank" rel="noopener noreferrer" className="text-white/80 text-sm hover:text-white">
-                        @mississippi.seoul.music
-                      </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Facebook className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-heading font-bold">Facebook</h4>
-                      <a href="https://www.facebook.com/lacy.quin" target="_blank" rel="noopener noreferrer" className="text-white/80 text-sm hover:text-white">
-                        Lacy Quin
-                      </a>
-                    </div>
-                  </div>
+            {/* Contact Info */}
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6">Studio Information</h2>
+
+              <div className="space-y-6">
+                <div>
+                  <p className="text-gray-400 text-sm uppercase tracking-wider font-bold mb-2">Address</p>
+                  <a
+                    href="https://maps.google.com/?q=418+Highland+View+Drive+Knoxville+TN+37920"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 text-gray-300 hover:text-amber-400 transition-colors"
+                  >
+                    <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5 text-amber-500" />
+                    <span>418 Highland View Drive, Knoxville, TN 37920</span>
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 text-sm uppercase tracking-wider font-bold mb-2">Phone</p>
+                  <a
+                    href="tel:8657738466"
+                    className="flex items-center gap-3 text-gray-300 hover:text-amber-400 transition-colors"
+                  >
+                    <Phone className="w-5 h-5 text-amber-500" />
+                    <span>(865) 773-8466</span>
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 text-sm uppercase tracking-wider font-bold mb-2">SoundCloud</p>
+                  <a
+                    href="https://soundcloud.com/big-mama-studio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-500 hover:text-amber-400 transition-colors"
+                  >
+                    soundcloud.com/big-mama-studio
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 text-sm uppercase tracking-wider font-bold mb-2">Facebook</p>
+                  <a
+                    href="https://www.facebook.com/norbert.stovall.1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-500 hover:text-amber-400 transition-colors"
+                  >
+                    facebook.com/norbert.stovall.1
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 text-sm uppercase tracking-wider font-bold mb-2">Yelp</p>
+                  <a
+                    href="https://www.yelp.com/biz/big-mamas-recording-studio-knoxville"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-amber-500 hover:text-amber-400 transition-colors"
+                  >
+                    Big Mama's Recording Studio
+                  </a>
+                </div>
+
+                <div className="pt-6 border-t border-amber-900">
+                  <p className="text-gray-400 italic">For fastest response, call Norbert directly at (865) 773-8466</p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="bg-black py-20">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-gray-400 mb-6 text-lg font-bold">Find Us in Knoxville, Tennessee</p>
+          <div className="w-full h-96 bg-gray-800 rounded-lg overflow-hidden">
+            <iframe
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              title="Big Mama Productions Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3269.0269269269266!2d-83.91166369999999!3d35.94083999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c6f4b5c5c5c5d%3A0x5c5c5c5c5c5c5c5c!2s418%20Highland%20View%20Dr%2C%20Knoxville%2C%20TN%2037920!5e0!3m2!1sen!2sus!4v1234567890"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="bg-slate-900 py-16 border-t border-amber-900">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-400 mb-6">Prefer to call? Reach Norbert directly.</p>
+          <a
+            href="tel:8657738466"
+            className="inline-block text-5xl font-bold text-amber-500 hover:text-amber-400 transition-colors mb-8"
+          >
+            (865) 773-8466
+          </a>
+          <p className="text-gray-400">
+            Or book via <a href="https://www.facebook.com/norbert.stovall.1/" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400">Facebook →</a>
+          </p>
         </div>
       </section>
     </Layout>
