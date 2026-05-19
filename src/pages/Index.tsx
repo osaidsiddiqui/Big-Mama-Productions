@@ -305,46 +305,54 @@ const Index = () => {
               .audio-player-wrapper {
                 position: relative;
                 background: linear-gradient(135deg, rgba(120, 53, 15, 0.1) 0%, rgba(180, 83, 9, 0.05) 100%);
-                border-radius: 12px;
+                border-radius: 50px;
                 overflow: hidden;
                 transition: all 0.3s ease;
-                border: 1px solid rgba(180, 83, 9, 0.3);
+                border: 2px solid rgba(217, 119, 6, 0.4);
+                max-width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
               }
 
               .audio-player-wrapper:hover {
-                border-color: rgba(217, 119, 6, 0.6);
-                box-shadow: 0 20px 25px -5px rgba(217, 119, 6, 0.2);
+                border-color: rgba(217, 119, 6, 0.8);
+                box-shadow: 0 10px 30px rgba(217, 119, 6, 0.25), inset 0 0 20px rgba(217, 119, 6, 0.1);
                 transform: translateY(-2px);
-                background: linear-gradient(135deg, rgba(120, 53, 15, 0.15) 0%, rgba(180, 83, 9, 0.08) 100%);
+                background: linear-gradient(135deg, rgba(120, 53, 15, 0.2) 0%, rgba(180, 83, 9, 0.12) 100%);
               }
 
               .audio-player-wrapper iframe {
-                display: block;
-                border-radius: 8px;
+                display: block !important;
+                border-radius: 50px !important;
+                height: 70px !important;
+                width: 100% !important;
+                border: none !important;
               }
 
               /* Custom scrollbar for SoundCloud player */
               .audio-player-wrapper ::-webkit-scrollbar {
-                width: 6px;
+                width: 4px;
+                height: 4px;
               }
 
               .audio-player-wrapper ::-webkit-scrollbar-track {
-                background: rgba(30, 41, 59, 0.5);
+                background: rgba(30, 41, 59, 0.3);
                 border-radius: 10px;
               }
 
               .audio-player-wrapper ::-webkit-scrollbar-thumb {
-                background: rgba(217, 119, 6, 0.5);
+                background: rgba(217, 119, 6, 0.6);
                 border-radius: 10px;
               }
 
               .audio-player-wrapper ::-webkit-scrollbar-thumb:hover {
-                background: rgba(217, 119, 6, 0.7);
+                background: rgba(217, 119, 6, 0.8);
               }
 
               @keyframes audioGlow {
-                0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.1); }
-                50% { box-shadow: 0 0 30px rgba(217, 119, 6, 0.2); }
+                0%, 100% { box-shadow: 0 10px 30px rgba(217, 119, 6, 0.15), inset 0 0 20px rgba(217, 119, 6, 0.05); }
+                50% { box-shadow: 0 10px 35px rgba(217, 119, 6, 0.3), inset 0 0 25px rgba(217, 119, 6, 0.1); }
               }
 
               .audio-player-wrapper.playing {
@@ -357,16 +365,16 @@ const Index = () => {
               <p className="text-gray-400">Explore our latest recordings and productions</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-4">
               {/* Track 1 - Lizabeth Alabama Mix */}
               <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
-                  height="300"
+                  height="70"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/big-mama-studio/lizabeth-alabama-mixmp3&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/big-mama-studio/lizabeth-alabama-mixmp3&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
                 />
               </div>
 
@@ -374,11 +382,11 @@ const Index = () => {
               <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
-                  height="300"
+                  height="70"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495131&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495131&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
                 />
               </div>
 
@@ -386,11 +394,11 @@ const Index = () => {
               <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
-                  height="300"
+                  height="70"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495116&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/388495116&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
                 />
               </div>
 
@@ -398,11 +406,11 @@ const Index = () => {
               <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
-                  height="300"
+                  height="70"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/342915687&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/342915687&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
                 />
               </div>
 
@@ -410,11 +418,11 @@ const Index = () => {
               <div className="audio-player-wrapper">
                 <iframe
                   width="100%"
-                  height="300"
+                  height="70"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay; encrypted-media"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/353605341&color=%23d97706&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/353605341&color=%23d97706&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
                 />
               </div>
             </div>
