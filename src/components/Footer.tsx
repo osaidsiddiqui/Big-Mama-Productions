@@ -23,7 +23,7 @@ const Footer = () => {
                 { label: "About", to: "/about" },
                 { label: "Services", to: "/services" },
                 { label: "Studio", to: "/studio" },
-                { label: "Portfolio", to: "/testimonials" },
+                { label: "Portfolio", to: "/portfolio" },
                 { label: "Testimonials", to: "/testimonials" },
                 { label: "Contact", to: "/contact" },
               ].map((link) => (

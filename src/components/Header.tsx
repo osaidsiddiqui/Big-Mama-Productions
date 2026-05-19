@@ -7,7 +7,7 @@ const navLinks = [
   { label: "About", to: "/about", hoverColor: "hover:text-amber-400" },
   { label: "Services", to: "/services", hoverColor: "hover:text-amber-400" },
   { label: "Studio", to: "/studio", hoverColor: "hover:text-amber-400" },
-  { label: "Portfolio", to: "/testimonials", hoverColor: "hover:text-amber-400" },
+  { label: "Portfolio", to: "/portfolio", hoverColor: "hover:text-amber-400" },
   { label: "Testimonials", to: "/testimonials", hoverColor: "hover:text-amber-400" },
   { label: "Contact", to: "/contact", hoverColor: "hover:text-amber-400" },
 ];
@@ -79,7 +79,7 @@ const Header = () => {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileOpen ? <X className="w-6 h-6 text-amber-500" /> : <Menu className="w-6 h-6 text-amber-500" />}
         </button>
       </div>
 
