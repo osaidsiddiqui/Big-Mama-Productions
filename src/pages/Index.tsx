@@ -28,7 +28,7 @@ const Index = () => {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-20 overflow-visible pb-0">
+      <section className="relative min-h-[85vh] flex items-center pt-20 overflow-hidden pb-32">
         {/* Carousel Background */}
         <div className="absolute inset-0 z-0">
           {heroImages.map((image, i) => (
@@ -58,17 +58,17 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black z-5" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="relative z-10 container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="inline-block px-6 py-3 bg-gradient-to-r from-amber-900 to-amber-800 rounded-full border border-amber-700">
               <span className="text-amber-300 text-xs font-bold tracking-widest">✨ KNOXVILLE'S LEGENDARY RECORDING STUDIO</span>
             </div>
             <div className="space-y-6">
-              <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl text-white font-bold leading-tight bg-gradient-to-b from-white to-amber-200 bg-clip-text text-transparent">
+              <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white font-bold leading-tight bg-gradient-to-b from-white to-amber-200 bg-clip-text text-transparent">
                 Where Great Music<br />Gets Made.<br />Since the 1970s.
               </h1>
-              <p className="text-gray-300 text-lg leading-relaxed max-w-xl font-light">
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl font-light">
                 Big Mama Productions has been the creative heartbeat of Knoxville, Tennessee for over five decades — recording soul, R&B, gospel, hip-hop, and everything in between.
               </p>
             </div>
@@ -102,7 +102,7 @@ const Index = () => {
         </div>
 
         {/* Wavy Shape Divider */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-amber-900 z-20">
+        <div className="absolute -bottom-1 left-0 right-0 h-24 md:h-32 z-20">
           <svg
             className="w-full h-full"
             viewBox="0 0 1200 120"
@@ -190,7 +190,7 @@ const Index = () => {
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">From raw demos to polished masters — we handle every stage of your music.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
             {[
               { icon: "🎙️", title: "Recording Sessions", desc: "State-of-the-art multi-track recording for solo artists, bands, vocalists, and voice-over work. All genres welcome.", img: heroImages[0] },
               { icon: "🎚️", title: "Mixing & Mastering", desc: "Professional mixing and mastering that blends vintage analog warmth with modern digital precision. Radio-ready results.", img: heroImages[1] },
@@ -201,7 +201,7 @@ const Index = () => {
                 key={i}
                 className="group relative bg-gradient-to-br from-slate-900 to-black border border-amber-700/50 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden"
               >
-                <div className="relative h-40 overflow-hidden mb-4">
+                <div className="relative h-32 sm:h-40 overflow-hidden mb-4">
                   <img
                     src={service.img}
                     alt={service.title}
@@ -242,10 +242,10 @@ const Index = () => {
               <div className="inline-block px-4 py-2 bg-gradient-to-r from-amber-900 to-amber-800 rounded-full mb-6 border border-amber-700">
                 <span className="text-amber-300 text-xs font-bold tracking-widest">🎵 IMMERSE YOURSELF</span>
               </div>
-              <h2 className="font-serif text-5xl md:text-6xl text-white font-bold mb-6 leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold mb-6 leading-tight">
                 Experience the<br /><span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">Sound of Excellence</span>
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-6">
+              <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-6">
                 Step into Big Mama Productions and discover what happens when legendary musicianship meets world-class recording technology. Every track tells a story of passion, precision, and professional mastery.
               </p>
               <p className="text-gray-500 mb-8 leading-relaxed">
@@ -361,8 +361,8 @@ const Index = () => {
             `}</style>
 
             <div className="text-center mb-12">
-              <h3 className="font-serif text-3xl text-white font-bold mb-2">Featured Tracks</h3>
-              <p className="text-gray-400">Explore our latest recordings and productions</p>
+              <h3 className="font-serif text-2xl sm:text-3xl text-white font-bold mb-2">Featured Tracks</h3>
+              <p className="text-gray-400 text-sm sm:text-base">Explore our latest recordings and productions</p>
             </div>
 
             <div className="grid grid-cols-1 gap-4">
@@ -432,7 +432,7 @@ const Index = () => {
                 href="https://soundcloud.com/big-mama-studio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-gradient-to-r from-amber-600 to-amber-500 text-black font-bold px-10 py-4 hover:shadow-2xl hover:shadow-amber-600/50 transition-all duration-300 rounded text-lg"
+                className="inline-block bg-gradient-to-r from-amber-600 to-amber-500 text-black font-bold px-6 sm:px-10 py-3 sm:py-4 hover:shadow-2xl hover:shadow-amber-600/50 transition-all duration-300 rounded text-sm sm:text-lg"
               >
                 <Music className="w-5 h-5 inline mr-2" />
                 View Full SoundCloud Profile
@@ -449,14 +449,14 @@ const Index = () => {
             <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
               <span className="text-amber-500 text-xs font-bold">GENRES WE WORK WITH</span>
             </div>
-            <h2 className="font-serif text-4xl text-white font-bold">No Matter Your Sound — We've Got You Covered</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold">No Matter Your Sound — We've Got You Covered</h2>
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-2 sm:gap-4 justify-center">
             {genres.map((genre, i) => (
               <span
                 key={genre}
-                className="group px-6 py-3 border-2 border-amber-600 text-amber-300 font-semibold rounded-full bg-gradient-to-r from-amber-900/20 to-transparent hover:from-amber-600 hover:to-amber-700 hover:text-black hover:border-amber-300 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/30 cursor-pointer hover:scale-105"
+                className="group px-3 sm:px-6 py-2 sm:py-3 border-2 border-amber-600 text-amber-300 font-semibold text-xs sm:text-sm rounded-full bg-gradient-to-r from-amber-900/20 to-transparent hover:from-amber-600 hover:to-amber-700 hover:text-black hover:border-amber-300 transition-all duration-300 hover:shadow-lg hover:shadow-amber-600/30 cursor-pointer hover:scale-105"
                 style={{ animationDelay: `${i * 30}ms` }}
               >
                 {genre}
@@ -473,10 +473,10 @@ const Index = () => {
             <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
               <span className="text-amber-500 text-xs font-bold">HOW IT WORKS</span>
             </div>
-            <h2 className="font-serif text-4xl text-white font-bold">Your Journey From Idea to Finished Track</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold">Your Journey From Idea to Finished Track</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step, i) => (
               <div key={i} className="text-center">
                 <div className="inline-block bg-amber-900 rounded-full w-16 h-16 flex items-center justify-center mb-4 border-2 border-amber-600">
@@ -498,12 +498,12 @@ const Index = () => {
             <div className="inline-block px-4 py-2 bg-amber-900 rounded mb-6">
               <span className="text-amber-500 text-xs font-bold">WHAT ARTISTS SAY</span>
             </div>
-            <h2 className="font-serif text-4xl text-white font-bold">Trusted by Knoxville Artists for Generations</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold">Trusted by Knoxville Artists for Generations</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="group relative bg-gradient-to-br from-slate-800 to-black border border-amber-700/50 p-8 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden">
+              <div key={i} className="group relative bg-gradient-to-br from-slate-800 to-black border border-amber-700/50 p-4 sm:p-8 rounded-lg hover:border-amber-500 hover:shadow-2xl hover:shadow-amber-600/20 transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-600/0 to-amber-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="relative z-10">
                   <div className="flex gap-1 mb-4 group-hover:scale-110 transition-transform origin-left">
