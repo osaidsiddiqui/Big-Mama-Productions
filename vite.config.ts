@@ -28,13 +28,17 @@ export default defineConfig(({ mode }) => ({
       compress: {
         drop_console: true,
       },
+      output: {
+        comments: false,
+      },
     },
     rollupOptions: {
       output: {
         manualChunks: {
           react: ["react", "react-dom", "react-router-dom"],
-          ui: ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-popover"],
+          radix: ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-popover", "@radix-ui/react-slot", "@radix-ui/react-tooltip"],
           query: ["@tanstack/react-query"],
+          ui: ["class-variance-authority", "clsx", "tailwind-merge"],
         },
       },
     },
